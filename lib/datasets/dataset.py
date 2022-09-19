@@ -11,7 +11,6 @@ from torch.utils import data
 from torch.utils.data import sampler, Dataset, Subset, ConcatDataset
 from torchvision import transforms
 from ..utils.labelmaps import get_vocabulary, labels2strs
-#from ..utils import to_numpy
 
 # what is this function when using ImageFile.
 ImageFile.LOAD_TRUNCATED_IMAGES = True
@@ -411,7 +410,7 @@ def debug():
     for i, (images, labels, lengths, masks) in enumerate(train_dataloader):
         print(i)
         # images = images.permute(0, 2, 3, 1)
-        # images = to_numpy(images)
+        # images = np.array(images)
         # images = images * 0.5 + 0.5
         # images = images * 255
         # for id, (image, label, label_len) in enumerate(zip(images, labels, lengths)):

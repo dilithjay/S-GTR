@@ -18,9 +18,9 @@ from torch.utils.data import DataLoader, SubsetRandomSampler
 
 from config import get_args
 from lib import models, datasets
-from lib.models.metrics import Accuracy, EditDistance, RecPostProcess, Accuracy_with_lexicon, EditDistance_with_lexicon
+from lib.models.metric import Accuracy, EditDistance, RecPostProcess, Accuracy_with_lexicon, EditDistance_with_lexicon
 from lib.models.SGTR import SGTR
-from lib.datasets.dataset import CustomDataset, LmdbDataset, AlignCollate,
+from lib.datasets.dataset import CustomDataset, LmdbDataset, AlignCollate
 from lib.datasets.concatdataset import ConcatDataset
 from lib.trainers import Trainer
 from lib.evaluators import Evaluator

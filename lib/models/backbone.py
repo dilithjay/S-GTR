@@ -6,7 +6,7 @@ import torch.nn.functional as F
 from torch import nn
 from torch.nn import init
 import numpy as np
-from backbones import resnet, resnet_dilated, resnet_fpn, resnet_ppm
+from .backbones import resnet, resnet_dilated, resnet_fpn, resnet_ppm
 
 class Backbone(nn.Module):
     def __init__(self, res_type,  add_variant ):

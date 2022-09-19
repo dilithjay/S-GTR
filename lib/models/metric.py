@@ -8,8 +8,6 @@ import math
 import torch
 import torch.nn.functional as F
 
-from ..utils import to_torch, to_numpy
-
 
 def _normalize_text(text):
   text = ''.join(filter(lambda x: x in (string.digits + string.ascii_letters), text))
@@ -25,8 +23,8 @@ def get_str_list(output, target, dataset=None):
   num_samples, max_len_labels = output.size()
   num_classes = len(dataset.char2id.keys())
   assert num_samples == target.size(0) and max_len_labels == target.size(1)
-  output = to_numpy(output)
-  target = to_numpy(target)
+  output = np.array(output)
+  target = np.array(target)
 
   # list of char list
   pred_list, targ_list = [], []
@@ -172,7 +170,7 @@ def RecPostProcess(output, target, score, dataset=None):
   max_len_labels = output.size(1)
   score_list = []
 
-  score = to_numpy(score)
+  score = np.array(score)
   for i, pred in enumerate(pred_list):
     len_pred = len(pred) + 1 # eos should be included
     len_pred = min(max_len_labels, len_pred) # maybe the predicted string don't include a eos.

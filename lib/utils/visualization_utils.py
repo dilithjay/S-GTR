@@ -16,13 +16,12 @@ import sys
 import torch
 from torch.nn import functional as F
 
-from . import to_torch, to_numpy
 from ..evaluation_metrics.metrics import get_str_list
 
 
 def recognition_vis(images, preds, targets, scores, dataset, vis_dir):
   images = images.permute(0,2,3,1)
-  images = to_numpy(images)
+  images = np.array(images)
   images = (images * 0.5 + 0.5)*255
   pred_list, targ_list = get_str_list(preds, targets, dataset)
   for id, (image, pred, target, score) in enumerate(zip(images, pred_list, targ_list, scores)):
@@ -60,17 +59,17 @@ def stn_vis(raw_images, rectified_images, ctrl_points, preds, targets, real_scor
   batch_size, _, raw_height, raw_width = raw_images.size()
 
   # translate the coordinates of ctrlpoints to image size
-  ctrl_points = to_numpy(ctrl_points)
+  ctrl_points = np.array(ctrl_points)
   ctrl_points[:,:,0] = ctrl_points[:,:,0] * (raw_width-1)
   ctrl_points[:,:,1] = ctrl_points[:,:,1] * (raw_height-1)
   ctrl_points = ctrl_points.astype(np.int)
 
   # tensors to pil images
   raw_images = raw_images.permute(0,2,3,1)
-  raw_images = to_numpy(raw_images)
+  raw_images = np.array(raw_images)
   raw_images = (raw_images * 0.5 + 0.5)*255
   rectified_images = rectified_images.permute(0,2,3,1)
-  rectified_images = to_numpy(rectified_images)
+  rectified_images = np.array(rectified_images)
   rectified_images = (rectified_images * 0.5 + 0.5)*255
 
   # draw images on canvas

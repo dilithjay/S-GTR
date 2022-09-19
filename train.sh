@@ -1,6 +1,6 @@
 CUDA_VISIBLE_DEVICES=0 python main.py \
-  --synthetic_train_data_dir /path/to/your/training/lmdb/data \
-  --test_data_dir /path/to/your/validation/lmdb/data \
+  --synthetic_train_data_dir D:/DocumentAI/Sinhala-ParSeq/data/train/sin_hw_1 \
+  --test_data_dir D:/DocumentAI/Sinhala-ParSeq/data/train/sin_hw_1 \
   --batch_size 512 \
   --workers 8 \
   --height 64 \

@@ -2,8 +2,6 @@ from __future__ import absolute_import
 
 import string
 
-from . import to_torch, to_numpy
-
 def get_vocabulary(voc_type, EOS='EOS', PADDING='PADDING', UNKNOWN='UNKNOWN'):
   '''
   voc_type: str: one of 'LOWERCASE', 'ALLCASES', 'ALLCASES_SYMBOLS'
@@ -38,7 +36,7 @@ def labels2strs(labels, id2char, char2id):
   if labels.ndimension() == 1:
     labels = labels.unsqueeze(0)
   assert labels.dim() == 2
-  labels = to_numpy(labels)
+  labels = np.array(labels)
   strings = []
   batch_size = labels.shape[0]
 
